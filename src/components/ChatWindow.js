@@ -28,7 +28,7 @@ function ChatWindow() {
 
       try {
         const newMessage = await getAIMessage(input);
-        setMessages(prevMessages => [...prevMessages, { role: "assistant", content: newMessage.content }]);
+        setMessages(prevMessages => [...prevMessages, { role: "assistant", content: newMessage }]);
       } catch (error) {
         console.error("Error fetching AI message:", error);
         setMessages(prevMessages => [...prevMessages, { role: "assistant", content: "Sorry, something went wrong." }]);
