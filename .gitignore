@@ -1,3 +1,30 @@
-node_modules
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment directories
 .env
-.env.local
+.venv
+
+# Environment-specific files
+.env
+.flaskenv
+
+# Node.js dependencies
+node_modules/
+
+# Pipfile lock (optional, include if you want consistent dependencies)
+Pipfile.lock
+
+# IDE/Editor specific files
+.vscode/
+.idea/
+
+# Compiled Python files
+*.cpython-3*.pyc
+
+# OS generated files
+.DS_Store
+Thumbs.db
