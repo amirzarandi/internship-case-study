@@ -27,7 +27,7 @@ function ChatWindow() {
       setInput("");
 
       try {
-        const newMessage = await getAIMessage(input);
+        const newMessage = await getAIMessage(input, messages);
         setMessages(prevMessages => [...prevMessages, { role: "assistant", content: newMessage }]);
       } catch (error) {
         console.error("Error fetching AI message:", error);

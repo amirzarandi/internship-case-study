@@ -1,15 +1,26 @@
-import { ask_chat } from "./integration";
+export const getAIMessage = async (input, history) => {
+  try {
+    const encodedInput = encodeURIComponent(input);
+    const encodedHistory = encodeURIComponent(JSON.stringify(history));
+    const url = `http://127.0.0.1:5000/ask_chat?input=${encodedInput}&history=${encodedHistory}`;
 
-const BaoDistributors = '63fef3606c20c1f22a700db3' // Trained on home_depot_data_2021.csv
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
 
-const chatID = BaoDistributors
-const history = []
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
 
-export const getAIMessage = async (input) => {
+    const data = await response.json();
 
-  const response = await ask_chat(input, history)
-  history.push({role: "user", content: input})
-  history.push({role: "assistant", content: response})
-
-  return response;
+    return data.response;
+  } catch (error) {
+    console.error('Error fetching AI message:', error);
+    return null;
+  }
 };
+

@@ -13,6 +13,7 @@ pgvector = "*"
 openai = "*"
 pandas = "*"
 tiktoken = "*"
+flask-migrate = "*"
 
 [dev-packages]
 
