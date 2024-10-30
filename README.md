@@ -1,70 +1,124 @@
-# Getting Started with Create React App
+# Instalily Chatbot Case Study
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This project is a full-stack chatbot solution developed as part of an internship case study for Instalily. The aim is to optimize sales processes for Bao Distributors, a leader in construction and home materials. The chatbot interacts with a product catalog dataset and improves the customer experience on Instalily's website by providing relevant, context-driven responses.
 
-In the project directory, you can run:
+Two integration approaches were explored for the chatbot:
+1. **Embedding Database**: Used to fetch relevant context from the CSV but had limitations in performance and flexibility.
+2. **LangChain**: Chosen as the primary framework for connecting the Language Learning Model (LLM) to the product catalog dataset, enabling dynamic context retrieval, chat history integration, and prompt refinement.
 
-### `npm start`
+## Table of Contents
+- [Installation](#installation)
+- [Setup](#setup)
+- [Running the Project](#running-the-project)
+- [Provided Resources](#provided-resources)
+- [Task Implementation](#task-implementation)
+- [Environment Variables](#environment-variables)
+- [Functionality Overview](#functionality-overview)
+- [Contributing](#contributing)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Installation
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/amirzarandi/internship-case-study
+   cd internship-case-study
+   ```
 
-### `npm test`
+### 2. **Install Python and Pipenv**
+   - Ensure Python is installed on your system.
+   - Install Pipenv for virtual environment management:
+     ```bash
+     pip install pipenv
+     ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 3. **Install Dependencies**
+   - Create and activate the virtual environment using Pipenv:
+     ```bash
+     pipenv install
+     pipenv shell
+     ```
+   - This will install all the required dependencies for the backend.
 
-### `npm run build`
+## Setup
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 1. **Backend Setup**
+   - The backend uses Flask to create an LLM-powered chat endpoint connected to the product catalog dataset.
+   - To set up the backend, run:
+     ```bash
+     flask run
+     ```
+   - Make sure to set up the environment variable `OPENAI_API_KEY` for LLM integration (see [Environment Variables](#environment-variables) below).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 2. **Database Setup**
+   - The provided Python scripts initialize a database storing product catalog data from the CSV file.
+   - To set up the database, run:
+     ```bash
+     python add_csv_knowledge_langchain.py
+     python add_csv_knowledge_embed.py
+     ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 3. **Frontend Setup**
+   - The frontend is based on a React boilerplate template provided by Instalily.
+   - You can run it using npm (Node Package Manager):
+     ```bash
+     npm install
+     npm run
+     ```
+   - The frontend has been modified to enhance user experience and visuals, providing better interaction with the chatbot.
 
-### `npm run eject`
+## Running the Project
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 1. **Start the Backend**
+   - Ensure the virtual environment is active, and the `OPENAI_API_KEY` is set:
+     ```bash
+     flask run
+     ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 2. **Start the Frontend**
+   - From the frontend directory, start the React application:
+     ```bash
+     npm run
+     ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Provided Resources
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+This case study includes:
+1. **Product Catalog Dataset**: A CSV file containing product details that the chatbot uses for context.
+2. **Frontend Boilerplate Template**: A React-based template for the chat interface, which has been modified to enhance user experience.
 
-## Learn More
+## Task Implementation
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The task was to build a full-stack chatbot solution with the following criteria:
+1. **Backend Chat Endpoint**:
+   - Developed using Flask and LangChain to connect the product catalog CSV data to the LLM.
+   - LangChain dynamically retrieves context from the CSV, incorporates chat history, and refines prompts based on user input.
+2. **Integrated Frontend**:
+   - The frontend was customized from the provided boilerplate to improve the user interface, interaction flow, and visual design.
+   - User-friendly elements were added to make the chat experience more intuitive.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Environment Variables
 
-### Code Splitting
+- **OPENAI_API_KEY**: Required for interacting with the OpenAI LLM.
+  - Set this variable in your terminal or environment file before running the backend:
+    ```bash
+    export OPENAI_API_KEY='your_openai_api_key'
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Functionality Overview
 
-### Analyzing the Bundle Size
+### 1. **LangChain-based Contextual Interaction**
+   - The chatbot retrieves context from the CSV using LangChain, allowing it to process user inputs effectively.
+   - The process includes:
+     1. **Context Retrieval**: Fetches up to 10 relevant rows related to the user’s query.
+     2. **History Integration**: Adds chat history to maintain continuity over multiple interactions.
+     3. **User Input**: Combines the input with context to refine the final prompt.
+     4. **LLM Querying**: Queries the LLM for a refined response.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 2. **Embedding Database (Initial Approach)**
+   - Initially, embeddings were used for context retrieval from the CSV, but this approach was slower and less flexible than LangChain.
 
-### Making a Progressive Web App
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Feel free to open issues or submit pull requests for improvements, bug fixes, or new features.
