@@ -9,12 +9,10 @@ function ChatWindow() {
   const [messages, setMessages] = useState(defaultMessage);
   const messagesEndRef = useRef(null);
 
-  // Function to scroll to the bottom
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // Scroll to bottom whenever messages update
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
@@ -24,7 +22,6 @@ function ChatWindow() {
       setMessages((prevMessages) => [...prevMessages, { role: "user", content: input }]);
 
       try {
-        // Call the AI message API
         const newMessage = await getAIMessage(input, messages);
         setMessages((prevMessages) => [...prevMessages, { role: "assistant", content: newMessage }]);
       } catch (error) {

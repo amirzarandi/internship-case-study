@@ -17,14 +17,11 @@ def ask_chat_embedding_route():
     from integration import ask_chat_embed
     user_input = request.args.get('input')
     history = request.args.get('history')
-
     try:
         history = eval(history) if history else []
     except Exception as e:
         return jsonify({"error": f"Invalid history format: {e}"}), 400
-
     response = ask_chat_embed(user_input, history)
-
     return jsonify({"response": response})
 
 @app.route('/ask_chat_langchain', methods=['GET'])
@@ -32,14 +29,11 @@ def ask_chat_langchain_route():
     from integration import ask_chat_langchain
     user_input = request.args.get('input')
     history = request.args.get('history')
-
     try:
         history = eval(history) if history else []
     except Exception as e:
         return jsonify({"error": f"Invalid history format: {e}"}), 400
-
     response = ask_chat_langchain(user_input, history)
-
     return jsonify({"response": response})
 
 if __name__ == '__main__':

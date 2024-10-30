@@ -1,7 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  height: 600px; // Set maximum height to make it scrollable
+  height: 600px;
   width: 700px;
   background-color: white;
   border-radius: 15px;
@@ -27,14 +27,14 @@
   line-height: 1.5;
 
   &.assistant-message {
-    background-color: #f1f5f9; // Light gray for assistant
+    background-color: #f1f5f9;
     color: #333;
     align-self: flex-start;
     border-top-left-radius: 0;
   }
 
   &.user-message {
-    background-color: #e0e7ff; // Light blue for user
+    background-color: #e0e7ff;
     color: #333;
     align-self: flex-end;
     border-top-right-radius: 0;
@@ -96,7 +96,6 @@
     border-radius: 10px; /* Smaller border radius for tighter screens */
   }
 }
-
 
 .assistant-message a {
   color: #007bff;

@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-/* General Styles */
 * {
   font-family: "Inter", sans-serif;
   font-size: 14px;
@@ -15,10 +14,9 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
-  background-color: rgb(228, 229, 241); // Light violet background
+  background-color: rgb(228, 229, 241);
 }
 
-/* App Container */
 .App {
   background-color: white;
   border-radius: 15px;
@@ -31,7 +29,6 @@ body {
   overflow: hidden;
 }
 
-/* Heading */
 .heading {
   width: 100%;
   background: rgba(255, 255, 255, 0.9);
