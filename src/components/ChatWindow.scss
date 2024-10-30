@@ -96,3 +96,13 @@
     border-radius: 10px; /* Smaller border radius for tighter screens */
   }
 }
+
+
+.assistant-message a {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.assistant-message strong {
+  font-weight: bold;
+}

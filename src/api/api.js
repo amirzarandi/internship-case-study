@@ -2,7 +2,7 @@ export const getAIMessage = async (input, history) => {
   try {
     const encodedInput = encodeURIComponent(input);
     const encodedHistory = encodeURIComponent(JSON.stringify(history));
-    const url = `http://127.0.0.1:5000/ask_chat?input=${encodedInput}&history=${encodedHistory}`;
+    const url = `http://127.0.0.1:5000/ask_chat_langchain?input=${encodedInput}&history=${encodedHistory}`;
 
     const response = await fetch(url, {
       method: 'GET',

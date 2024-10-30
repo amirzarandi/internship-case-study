@@ -12,9 +12,9 @@ CORS(app)
 from models.knowledge import Knowledge
 db.Model = Knowledge.__class__
 
-@app.route('/ask_chat', methods=['GET'])
-def ask_chat_route():
-    from integration import ask_chat
+@app.route('/ask_chat_embedding', methods=['GET'])
+def ask_chat_embedding_route():
+    from integration import ask_chat_embed
     user_input = request.args.get('input')
     history = request.args.get('history')
 
@@ -23,7 +23,22 @@ def ask_chat_route():
     except Exception as e:
         return jsonify({"error": f"Invalid history format: {e}"}), 400
 
-    response = ask_chat(user_input, history)
+    response = ask_chat_embed(user_input, history)
+
+    return jsonify({"response": response})
+
+@app.route('/ask_chat_langchain', methods=['GET'])
+def ask_chat_langchain_route():
+    from integration import ask_chat_langchain
+    user_input = request.args.get('input')
+    history = request.args.get('history')
+
+    try:
+        history = eval(history) if history else []
+    except Exception as e:
+        return jsonify({"error": f"Invalid history format: {e}"}), 400
+
+    response = ask_chat_langchain(user_input, history)
 
     return jsonify({"response": response})
 

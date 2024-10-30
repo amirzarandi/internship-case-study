@@ -14,6 +14,9 @@ openai = "*"
 pandas = "*"
 tiktoken = "*"
 flask-migrate = "*"
+langchain-core = "*"
+langchain-community = "*"
+langchain-openai = "*"
 
 [dev-packages]
 
