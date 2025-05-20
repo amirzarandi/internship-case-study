@@ -1,8 +1,8 @@
-# Instalily Chatbot Case Study
+# Customer Support Chatbot
 
 ## Overview
 
-This project is a full-stack chatbot solution developed as part of an internship case study for Instalily. The aim is to optimize sales processes for Bao Distributors, a leader in construction and home materials. The chatbot interacts with a product catalog dataset and improves the customer experience on Instalily's website by providing relevant, context-driven responses.
+This project is a full-stack chatbot solution. The aim is to optimize sales processes for companies in construction and home materials. The chatbot interacts with a product catalog dataset and improves the customer experience by providing relevant, context-driven responses.
 
 Two integration approaches were explored for the chatbot:
 1. **Embedding Database**: Used to fetch relevant context from the CSV but had limitations in performance and flexibility.
